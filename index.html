@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flavor Heaven - Menu</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('https://images.unsplash.com/photo-1551782450-a2132b4ba21d') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+    }
+    header {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+    }
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+    }
+    nav {
+      margin: 20px;
+    }
+    nav button {
+      background-color: rgba(255, 255, 255, 0.2);
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      color: white;
+    }
+    nav button:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+    .menu-section {
+      background-color: rgba(0, 0, 0, 0.6);
+      margin: 20px auto;
+      padding: 20px;
+      width: 80%;
+      border-radius: 10px;
+      display: none;
+      text-align: left;
+    }
+    .menu-section.active {
+      display: block;
+    }
+    .menu-section h2 {
+      border-bottom: 2px solid white;
+      padding-bottom: 10px;
+      text-align: center;
+    }
+    .menu-item {
+      margin: 10px 0;
+      cursor: pointer;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 5px;
+      padding: 10px;
+      transition: background-color 0.3s;
+      display: inline-block;
+      width: 45%;
+      text-align: left;
+      box-sizing: border-box;
+      margin-right: 5%;
+    }
+    .menu-item:nth-child(2n) {
+      margin-right: 0;
+    }
+    .menu-item:hover {
+      background-color: rgba(255,255,255,0.3);
+    }
+    footer {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      margin-top: 40px;
+      text-align: center;
+    }
+    /* Modal Styles */
+    #itemModal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+    }
+    #modalContent {
+      background-color: #222;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 600px;
+      color: white;
+      position: relative;
+      text-align: center;
+    }
+    #modalContent h3 {
+      margin-top: 0;
+    }
+    #closeModal {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      color: white;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Flavor Heaven</h1>
+  </header>
+
+  <nav>
+    <button onclick="showMenu('beverages')">Chilled Beverages</button>
+    <button onclick="showMenu('starters')">Starters</button>
+    <button onclick="showMenu('maincourse')">Main Course</button>
+    <button onclick="showMenu('desserts')">Desserts</button>
+    <button onclick="showMenu('visit')">Visit Us</button>
+  </nav>
+
+  
+  <div id="beverages" class="menu-section active">
+    <h2>Chilled Beverages</h2>
+    <div class="menu-item" onclick="showDetails('Cold Coffee')">Cold Coffee</div>
+    <div class="menu-item" onclick="showDetails('Iced Tea')">Iced Tea</div>
+    <div class="menu-item" onclick="showDetails('Mango Smoothie')">Mango Smoothie</div>
+    <div class="menu-item" onclick="showDetails('Strawberry Milkshake')">Strawberry Milkshake</div>
+    <div class="menu-item" onclick="showDetails('Mint Mojito')">Mint Mojito</div>
+    <div class="menu-item" onclick="showDetails('Pineapple Punch')">Pineapple Punch</div>
+    <div class="menu-item" onclick="showDetails('Buttermilk')">Buttermilk</div>
+    <div class="menu-item" onclick="showDetails('Kiwi Lemonade')">Kiwi Lemonade</div>
+    <div class="menu-item" onclick="showDetails('Berry Blast Smoothie')">Berry Blast Smoothie</div>
+    <div class="menu-item" onclick="showDetails('Blue Lagoon Mocktail')">Blue Lagoon Mocktail</div>
+    <div class="menu-item" onclick="showDetails('Peach Iced Tea')">Peach Iced Tea</div>
+    <div class="menu-item" onclick="showDetails('Rose Milk')">Rose Milk</div>
+    
+  </div>
+
+  <div id="starters" class="menu-section">
+    <h2>Starters</h2>
+    <div class="menu-item" onclick="showDetails('corn cheese pizza')">Paneer Tikka</div>
+    <div class="menu-item" onclick="showDetails('qhite sauce pasta')">French Fries</div>
+    <div class="menu-item" onclick="showDetails('Chilli Paneer')">Chilli Paneer</div>
+    <div class="menu-item" onclick="showDetails('Veg Spring Rolls')">Veg Spring Rolls</div>
+    <div class="menu-item" onclick="showDetails('Cheesy Garlic Bread')">Cheesy Garlic Bread</div>
+    <div class="menu-item" onclick="showDetails('Pav Bhaji Sliders')">Pav Bhaji Sliders</div>
+    <div class="menu-item" onclick="showDetails('Chilli Garlic Momos')">Chilli Garlic Momos</div>
+    <div class="menu-item" onclick="showDetails('French Fries')">French Fries</div>
+    <div class="menu-item" onclick="showDetails('Paneer Tikka')">Paneer Tikka</div>
+    <div class="menu-item" onclick="showDetails('Tandoori Aloo')">Tandoori Aloo</div>
+    <div class="menu-item" onclick="showDetails('Chinese Bhel')">Chinese Bhel</div>
+    <div class="menu-item" onclick="showDetails('Pani Puri Shots')">Pani Puri Shots</div>
+    
+    
+  </div>
+
+  <div id="maincourse" class="menu-section">
+    <h2>Main Course</h2>
+    <div class="menu-item" onclick="showDetails('Paneer Butter Masala')">Paneer Butter Masala</div>
+    <div class="menu-item" onclick="showDetails('Dal Makhani')">Dal Makhani</div>
+    <div class="menu-item" onclick="showDetails('Veg Biryani with Raita')">Veg Biryani with Raita</div>
+    <div class="menu-item" onclick="showDetails('Chana Masala')">Chana Masala</div>
+    <div class="menu-item" onclick="showDetails('Malai Kofta')">Malai Kofta</div>
+    <div class="menu-item" onclick="showDetails('Kadhai Paneer')">Kadhai Paneer</div>
+    <div class="menu-item" onclick="showDetails('Litti Chokha')">Litti Chokha</div>
+    <div class="menu-item" onclick="showDetails('Baingan Bharta')">Baingan Bharta</div>
+    <div class="menu-item" onclick="showDetails('Kadhai Paneer')">Kadhai Paneer</div>
+    <div class="menu-item" onclick="showDetails('Paneer Tikka Masala')">Paneer Tikka Masala</div>
+    <div class="menu-item" onclick="showDetails('Jeera Rice')">Jeera Rice</div>
+    <div class="menu-item" onclick="showDetails('Dal tadka')">Dal tadka</div>
+    
+  </div>
+
+  <div id="desserts" class="menu-section">
+    <h2>Desserts</h2>
+    <div class="menu-item" onclick="showDetails('Chocolate Lava Cake')">Chocolate Lava Cake</div>
+    <div class="menu-item" onclick="showDetails('Rasmalai')">Rasmalai</div>
+    <div class="menu-item" onclick="showDetails('Gulab Jamun')">Gulab Jamun</div>
+    <div class="menu-item" onclick="showDetails('Kesar Pista Kulfi')">Kesar Pista Kulfi</div>
+    <div class="menu-item" onclick="showDetails('Gajar Ka Halwa')">Gajar Ka Halwa</div>
+    <div class="menu-item" onclick="showDetails('Kaju Katli')">Kaju Katli</div>
+    <div class="menu-item" onclick="showDetails('Fruit Custard')">Fruit Custard</div>
+    <div class="menu-item" onclick="showDetails('Red Velvet Pastry')">Red Velvet Pastry</div>
+    <div class="menu-item" onclick="showDetails('Brownie Sizzler')">Brownie Sizzler</div>
+    <div class="menu-item" onclick="showDetails('Rose Milk Pudding')">Rose Milk Pudding</div>
+    <div class="menu-item" onclick="showDetails('Tutti Frutti Ice Cream')">Tutti Frutti Ice Cream</div>
+    <div class="menu-item" onclick="showDetails('Belgian Waffle with Ice Cream')">Belgian Waffle with Ice Cream</div>
+    
+  </div>
+
+  <div id="visit" class="menu-section">
+    <h2>Visit Us</h2>
+    <p><strong>Address:</strong> 21 Flavor Street, Vijay Nagar, Indore, Madhya Pradesh - 452010</p>
+    <p><strong>Phone:</strong> 7389879522 , 7067101770</p>
+    <p><strong>Email:</strong> contact@flavorheaven.com</p>
+    <p>We are open every day from 11 AM to 11 PM. Come enjoy heavenly flavors with us!</p>
+  </div>
+
+  
+  <div id="itemModal">
+    <div id="modalContent">
+      <button id="closeModal" onclick="closeModal()">&times;</button>
+      <h3 id="itemName"></h3>
+      <p id="itemPrice">Price: ₹199</p>
+      <p id="itemDesc1">Delicious and freshly prepared.</p>
+      <p id="itemDesc2">Served chilled or hot as per recipe.</p>
+      <p id="itemDesc3">A customer favorite!</p>
+    </div>
+  </div>
+
+  <script>
+    function showMenu(sectionId) {
+      const sections = document.querySelectorAll('.menu-section');
+      sections.forEach(section => section.classList.remove('active'));
+      document.getElementById(sectionId).classList.add('active');
+    }
+
+    function showDetails(itemName) {
+      document.getElementById('itemName').textContent = itemName;
+      // Static example details - you can customize by item
+      document.getElementById('itemPrice').textContent = "Price: ₹199";
+      document.getElementById('itemDesc1').textContent = "Freshly made with love.";
+      document.getElementById('itemDesc2').textContent = "Perfectly spiced and flavorful.";
+      document.getElementById('itemDesc3').textContent = "Sure to satisfy your cravings.";
+      document.getElementById('itemModal').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('itemModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
